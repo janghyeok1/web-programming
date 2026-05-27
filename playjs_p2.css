@@ -1,0 +1,175 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	width: 960px;
+	margin: 0 auto;
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+img {
+	border: 0;
+}
+
+header {
+	width: 900px;
+	height: 80px;
+	background-color: #f6f9d4;
+	position: fixed;
+	top: 0;
+	padding: 40px 30px 0 30px;
+}
+
+#title {
+	height: 40px;
+	text-align: center;
+	font-family: 'Shadows Into Light Two', cursive;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+header>nav {
+	height: 40px;
+
+}
+
+nav ul {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.main-menu {
+	display: block;
+	width: 100px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	color: black;
+	text-decoration: underline;
+}
+
+#content {
+	margin-top: 120px;
+	padding: 10px;
+
+}
+
+footer {
+	padding: 20px;
+	width: 920px;
+	background-color: #d2f299;
+}
+
+footer>div {
+	font-family: 'Poiret One', cursive;
+	font-weight: bold;
+	text-align: center;
+}
+
+.lab {
+	padding: 10px;
+	border: 1px solid black;
+	margin-top: 10px;
+}
+
+#schedule_header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 50px;
+}
+
+#note_form {
+	display: none;
+}
+
+.popup {
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: white;
+	padding: 30px 20px;
+	z-index: 1;
+	width: 500px;
+	height: 400px;
+	border: 1px solid black;
+}
+
+dl {
+	width: 420px;
+	margin: 0 auto 20px;
+}
+
+dt {
+	font-size: 16px;
+	color: #fff;
+	background: #31374c;
+	padding: 8px 12px;
+	border-radius: 3px;
+	margin: 0 0 2px;
+}
+
+dd {
+	font-size: 14px;
+	color: #4d4d4d;
+	background: #fff;
+	padding: 10px 20px;
+	margin: 0 0 2px;
+}
+
+dt.closed {
+	background: #9396a2;
+	cursor: pointer;
+}
+
+dd.closed {
+	display: none;
+}
+
+.slideshow {
+	width: 210px;
+	height: 150px;
+	margin: 10px 10px;
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+}
+
+.slideshow img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	border: 5px solid #dfdfdf;
+	opacity: 1;
+}
+
+.slideshow img.alt {
+	opacity: 0;
+}
+#textbox {
+	width:800px;
+	height: 400px;
+	border: 1px solid black;
+}
+#textbox table {
+	border-collapse: collapse;
+	border: 1px solid black;
+	margin:20px auto;
+}
+#textbox td, #textbox th
+{
+	border: 1px solid black;
+	text-align: center;
+	line-height: 30px;
+	height: 30px;
+	padding: 15px;
+}
