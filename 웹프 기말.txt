@@ -1,0 +1,70 @@
+정규식
+[abc] abc 중 하나
+[^abc] abc를 제외한 모든 문자
+[a-zA-Z\d@#$] 모든 영문자와 숫자, 특수문자 @#$
+(x|y) x 또는 y
+n+ n이 1번 이상
+n* n이 0번 이상
+n? n이 0 또는 1번
+n{x} n이 x번
+n{x,y} n이 x번 이상 y번 이하
+n{x,} n이 x번 이상
+n$ n으로 끝
+^n n으로 시작
+(?=n) n이 뒤따르는 문자열
+(?!n) n이 뒤따르지 않는 문자열
+──────────────────────────────────────────────────────────────
+정규식.exec(문자열) match되는 첫 번째 문자열 반환
+정규식.test(문자열) match되는 패턴이 있으면 true 아니면 false
+string.match(정규식) match되는 첫 번째 문자열 반환
+string.search(정규식) match되는 첫 번째 문자열의 위치 반환
+──────────────────────────────────────────────────────────────
+<canvas> 캔버스 생성(그림판)
+.getContext("2d") context 객체 생성
+.fillStyle 색상 채우기
+.fill() 도형 최종 채우기
+.fillRect(x, y, 가로, 세로) 사각형 채우기
+.rect(x, y, 가로, 세로) 사각형 생성
+.beginPath() 선 생성
+.closePath() 선 생성 종료
+.moveTo(x, y) 선 시작 위치 지정
+.lineTo(x, y) 선 이동할 위치 지정
+.strokeStyle 선 색상 지정
+.stroke() 선 그리기
+.arc(x, y, r, 시작 각도, 끝 각도, 반시계방향여부) 각도 2.0 * Math.PI, 시계방향 false
+.font css 폰트 속성
+.fillText(내용, x, y)
+.clearRect(x, y, 가로, 세로) 초기화
+──────────────────────────────────────────────────────────────
+id = setTimeout() 1회시행
+clearTimeout(id) 종료
+id = setInterval() 반복시행
+clearInterval(id) 종료
+id = requestAnimationFrame() 1회시행
+cancelAnimationFrame(id) 종료
+──────────────────────────────────────────────────────────────
+const myFunc = () => {} const 함수
+parent.appendChild(child) node객체 추가
+parent.append(child) node객체와 문자열 모두 추가
+p.insertAdjacentHTML("위치", target) 문자열로 된 HTML을 특정위치에 삽입
+    beforebegin p 앞
+    afterbegin p 맨앞 자식
+    beforeend p 맨뒤 자식
+    afterend p 뒤
+z-index: n 숫자가 클수록 앞으로 옴
+window.onload = () => {} 모든 로딩 완료후 실행, 느림
+document.addEventListener("DOMContentLoaded", () => {}); DOM트리 완성후 실행, 빠름
+.classList.add("class") class 추가
+    .remove("") class 제거
+    .toggle("") 있으면 제거, 없으면 추가
+    .contains("") 존재여부 확인, true/false
+const {innerWidth: winW, innerHeight: winH} = window // winW, winH라는 변수에 값 할당
+const color = ["red", "green", "blue"];
+const [first, second] = color; first에 "red", second에 "green" 할당
+const [,,third] = color; third에 blue 할당
+const [first,...rest] = color; first에 red, rest에 ["green", "blue"] 할당
+items.forEach((item, index) => {}); 반복문
+<dl>
+    <dt>분류1</dt>
+    <dd>내용</dd>
+</dl>
