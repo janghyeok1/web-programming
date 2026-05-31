@@ -23,9 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const textData = await res.text();
         const data = JSON.parse(textData);
         let tableHTML = ``;
-        tableHTML += data.map(student => `
-                ${student.name}
-        `).join(" ");
+        tableHTML += data.map(student => `<p>${student.name}</p>`).join("");
         tArea.insertAdjacentHTML('beforeend', tableHTML);
     });
 
