@@ -4,7 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
     add_img.addEventListener("click", showNoteForm);
 
     let add_note = document.querySelector("#add_note");
-    add_note.addEventListener("click", putNote);
+    getNotes();
+    add_note.addEventListener("click", saveNote);
 
     let getText2 = document.querySelector("#getText2");
     getText2.addEventListener("click", gettArea);
@@ -17,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const btn1 = document.querySelector("#getText1");
     const tArea = document.querySelector("#textbox");
     btn1.addEventListener("click", async () => {
-        const tArea = document.querySelector("#textbox");
         tArea.innerHTML = "";
         const res = await fetch("data.txt");
         const textData = await res.text();
@@ -66,6 +66,47 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+const getNotes = async () => {
+    const res = await fetch("/getNotes");
+    const data = await res.json();
+    printNote(data);
+};
+
+const saveNote = async () => {
+    const title = document.querySelector("#note_title").value;
+    const date = document.querySelector("#note_date").value;
+    const content = document.querySelector("#note_content").value;
+    const note = {
+        "title": title,
+        "date": date,
+        "content": content
+    }
+    const res = await fetch("/saveNote", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(note)
+    });
+    const data = await res.json();
+    closeNoteForm();
+    printNote(data);
+};
+const printNote = (data) => {
+    const noteArea = document.querySelector("#note");
+    noteArea.innerHTML = "";
+    data.forEach(item => {
+        if(!item.title) item.title = "(제목없음)";
+        if(!item.date) item.date = "None";
+        if(!item.content) item.content = "(내용없음)";
+        let note = `
+            <div>
+                <strong>${item.title}</strong><br>
+                <i>${item.date}</i>
+                <p>${item.content}</p><br>
+            </div>`
+        if (noteArea) noteArea.insertAdjacentHTML("beforeend", note);
+    });
+};
+
 const gettArea = async () => {
     const tArea = document.querySelector("#textbox");
     tArea.innerHTML = "";
@@ -79,6 +120,7 @@ const gettArea = async () => {
                     <th>아이디</th>
                     <th>학과</th>
                     <th>수강과목</th>
+                    <th>전화번호</th>
                 </tr>`;
     tableHTML += data.map(student => `
             <tr>
@@ -86,6 +128,7 @@ const gettArea = async () => {
                 <td>${student.id}</td>
                 <td>${student.department}</td>
                 <td>${student.class.join(", ")}</td>
+                <td>${student.phone}</td>
             </tr>
         `).join(" ");
     tableHTML += `</table>`;
@@ -106,20 +149,6 @@ const showNoteForm = () => {
     noteForm.classList.add("popup");
     noteForm.style.display = "block";
     changePosition(noteForm);
-};
-
-const putNote = () => {
-    const note_title = document.querySelector("#note_title").value;
-    const note_date = document.querySelector("#note_date").value;
-    const note_content = document.querySelector("#note_content").value;
-
-    const note = `<div><strong>${note_title}</strong><br><i>${note_date}</i><br>${note_content.replace(/\n/g, `<br>`)}</div>`;
-    const id_note = document.querySelector("#note");
-
-    if (id_note) {
-        id_note.insertAdjacentHTML("beforeend", note);
-    }
-    closeNoteForm();
 };
 
 const closeNoteForm = () => {
