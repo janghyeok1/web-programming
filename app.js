@@ -1,9 +1,7 @@
-const express = require("express"), http = require("http");
-const static = require("serve-static");
+const express = require("express")
 const app = express();
-const router = express.Router();
 app.set("port", process.env.PORT || 8080);
-app.set("host", "203.252.166.181");
+app.set("host", "172.30.24.133");
 app.use(express.static(__dirname));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
